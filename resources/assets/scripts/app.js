@@ -3,84 +3,46 @@
  */
 import 'jquery';
 import 'alpinejs';
+import AOS from 'aos';
 
-var jQueryBridget = require('jquery-bridget');
-var Flickity = require('flickity');
-
-Flickity.setJQuery( $ );
-jQueryBridget( 'flickity', Flickity, $ );
 
 $(document).ready(() => {
   // console.log('Hello world');
+  AOS.init({
+      offset: 275,
+      once: true,
+      duration: 700,
+  });
+
+  window.addEventListener('load', AOS.refresh);
+
+//   if(window.innerWidth >= 768) {
+//     AOS.refresh({
+//         offset: 700,
+//     });
+//   }
+
+//     $(window).resize(function(e){
+//         if(window.innerWidth >= 768) {
+//             AOS.refresh({
+//                 offset: 500,
+//             });
+//             console.log('Got Here');
+//         }
+//     });
 
   $('input[type=checkbox]').addClass('form-checkbox');
 
   $(document).bind('gform_post_render', function() {
-    $('input[type=checkbox]').addClass('form-checkbox');
-    $('#gform_2 .gform_footer').appendTo('#gform_2 .gform_fields');
-    $('#gform_3 .gform_footer').appendTo('#gform_3 .gform_fields');
+
   })
 
-  $('.hero_carousel').flickity({
-    // options
-    contain: true,
-    wrapAround: true,
-    prevNextButtons: false,
-  });
+  $('.footer_form #gform_submit_button_1').html('<svg class="h-8 w-16" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>')
+  $('.post_form #gform_submit_button_1').html('<svg class="h-8 w-16" fill="currentColor" viewBox="0 0 20 20"><path d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" fill-rule="evenodd"></path></svg>')
 
-  $(window).smartresize(function() {
-    // console.log('window resized');
-    $('.flickity-viewport').height('');
-    $('.hero_carousel').flickity('resize');
-
-  });
-
-  $('#gform_2 .gform_footer').appendTo('#gform_2 .gform_fields');
-
-  $('#gform_3 .gform_footer').appendTo('#gform_3 .gform_fields');
-
-  $('.flickity-page-dots').appendTo('.flickity-viewport');
-
-  $(".ajax-load").click(function(e){
-    e.preventDefault();
-    var page =$(this).data("page");
-    var count = $(this).data("posts");
- 
-    $.ajax({
-        type:"POST",
-        url: ajax_url.ajax_url,
-        data: {
-            action:'load_more', 
-            page: page,
-            count: count
-        },
-        beforeSend: function() {
-          $('.loading-anim').show();
-          $('.ajax-load').hide();
-        },  
-        success:function(data){
-          var result = JSON.parse(data)
-          //console.log(result.view)
-          $('.rp-container').append(result.view);
-          if(result.button) {
-            // $('.ajax-load').show();
-            $('.ajax-load').data('page', result.button);
-          }
-          else {
-            $('.ajax-load').hide();
-          }
-        },
-        complete:function() {
-          $('.loading-anim').hide();
-        },  
-        error: function (req, e) {
-          console.log(JSON.stringify(req));
-        } 
-    });
-  });
-  
 
 });
+
 
 (function($,sr){
 

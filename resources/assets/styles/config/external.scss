@@ -2,10 +2,16 @@
  * External
  */
 
+ /* purgecss start ignore */
 @tailwind base;
 
 @tailwind components;
 
+/* purgecss end ignore */
+
 @tailwind utilities;
 
-// @import '~bootstrap/scss/bootstrap';
+
+ /*! purgecss start ignore */
+@import '~aos/dist/aos.css';
+/*! purgecss end ignore */

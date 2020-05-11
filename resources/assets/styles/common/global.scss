@@ -30,18 +30,38 @@
 }
 
 html {
-  @apply font-heebo font-light bg-c-gray-300;
+  @apply font-arimo text-c-gray-400;
   padding: env(safe-area-inset);
+  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4 {
-  @apply font-slab font-normal;
+  @apply font-bold mb-2;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h1 {
+  @apply text-4xl;
 }
 
 p {
-  @apply mb-4 leading-relaxed;
+  @apply mb-4 leading-6;
 }
 
+b, strong {
+  @apply font-bold;
+}
 
 
 /* purgecss end ignore */

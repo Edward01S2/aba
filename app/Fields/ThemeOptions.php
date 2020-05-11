@@ -67,16 +67,20 @@ class ThemeOptions extends Field
             ->setLocation('options_page', '==', 'acf-options-options')
             ->addTab('Logos', ['placement' => 'top'])
             ->addImage('Logo')
+            ->addImage('Footer Logo')
             ->addTab('Footer', ['placement' => 'top'])
             ->addText('Copyright')
+            ->addWysiwyg('About')
             ->addTab('Forms')
             ->addText('Contact Title')
             ->addText('Contact Subtitle')
             ->addText('Signup Title')
             ->addTab('Blog')
-            ->addText('Blog Title')
-            ->addImage('Blog BG Image')
-            ->addText('Blog Block Title');
+            ->addTab('Social')
+                ->addRepeater('Social')
+                    ->addImage('Icon')
+                    ->addLink('Link')
+                ->endRepeater();
 
         return $themeoptions->build();
     }

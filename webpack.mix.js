@@ -17,7 +17,7 @@ const tailwindcss = require('tailwindcss');
  */
 
 mix.setPublicPath('./dist')
-   .browserSync('catalyst.test');
+   .browserSync('aba.test');
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
@@ -28,6 +28,10 @@ mix.sass('resources/assets/styles/app.scss', 'styles')
    .purgeCss({
      whitelist: require('purgecss-with-wordpress').whitelist,
      whitelistPatterns: require('purgecss-with-wordpress').whitelistPatterns,
+     whitelistPatternsChildren: [
+      /^data-aos/,
+      /^aos/,
+     ],
    });
 
 mix.js('resources/assets/scripts/app.js', 'scripts')

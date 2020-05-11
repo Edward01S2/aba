@@ -14,6 +14,9 @@ class Footer extends Composer
         return [
             'nav' => $this->nav(),
             'copyright' => get_field('copyright', 'options'),
+            'logo' => get_field('Footer Logo', 'options'),
+            'about' => get_field('about', 'options'),
+            'icons' => get_field('Social', 'options'),
         ];
     }
 
@@ -27,6 +30,7 @@ class Footer extends Composer
         $menu = array();
         $active = ( isset($_SERVER['HTTPS'] ) ) ? 'https' : 'http';
         $active .= '://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]';
+        if($array_menu):
         foreach ($array_menu as $m) {
             if (empty($m->menu_item_parent)) {
                 $menu[$m->ID] = array();
@@ -84,5 +88,6 @@ class Footer extends Composer
             }
         }
       return $menu;
+      endif;
     }
 }

@@ -15,19 +15,29 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
+      'c-gray': {
+        100: '#979DAC'
+      },
+
+      'c-red': {
+        100: '#EF4B4B',
+        200: '#C63939'
+      },
+
       'c-blue': {
-        50: '#ddf1fb',
-        100: '#60c7cc',
-        200: '#218dcc',
-        300: '#0c0e21',
-        400: '#1b6ba7',
+        100: '#0466C8',
+        200: '#0353A4',
+        300: '#023E7D',
+        400: '#002855',
+        500: '#001845',
+        600: '#001233',
       },
 
       'c-gray': {
-        100: '#8e8d8d',
-        200: '#302f30',
-        300: '#231f20',
-        400: '#191617',
+        100: '#979DAC',
+        200: '#7D8597',
+        300: '#5C677D',
+        400: '#33415C',
       },
 
       gray: {
@@ -225,8 +235,7 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
-      orange: '0px 0.25rem 0px #d4791b',
-      blue: '0px 0.25rem 0px #119c9e',
+      post: '0 34px 44px rgba(0, 0, 0, 0.1)',
     },
     container: {},
     cursor: {
@@ -256,15 +265,9 @@ module.exports = {
       default: '1',
     },
     fontFamily: {
-      heebo: [
-        'Heebo',
-        'heebo',
-        'sans-serif'
-      ],
-      slab: [
-        'Roboto Slab',
-        'roboto-slab',
-        'serif',
+      arimo: [
+        'arimo',
+        'sans-serif',
       ],
       sans: [
         'system-ui',
@@ -295,6 +298,8 @@ module.exports = {
       '4xl': '2.25rem',
       '5xl': '3rem',
       '6xl': '4rem',
+      '7xl': '5rem',
+      '6.5': '6.5rem',
     },
     fontWeight: {
       hairline: '100',
@@ -368,6 +373,7 @@ module.exports = {
       '5xl': '64rem',
       '6xl': '72rem',
       full: '100%',
+      '640': '640px',
       ...breakpoints(theme('screens')),
     }),
     minHeight: {
@@ -643,6 +649,7 @@ module.exports = {
       '500': '500ms',
       '700': '700ms',
       '1000': '1000ms',
+      '3000': '3000ms',
     },
   },
   variants: {
@@ -729,7 +736,7 @@ module.exports = {
     transformOrigin: ['responsive'],
     scale: ['responsive', 'hover', 'focus'],
     rotate: ['responsive', 'hover', 'focus'],
-    translate: ['responsive', 'hover', 'focus'],
+    translate: ['responsive', 'hover', 'focus', 'group-hover'],
     skew: ['responsive', 'hover', 'focus'],
     transitionProperty: ['responsive'],
     transitionTimingFunction: ['responsive'],
@@ -739,4 +746,7 @@ module.exports = {
   plugins: [
     require('@tailwindcss/ui'),
   ],
+  purge: {
+    enabled: false,
+  }
 }

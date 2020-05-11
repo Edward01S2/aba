@@ -87,16 +87,16 @@
 // }
 
 .gform_wrapper {
-  @apply w-full text-left;
+  @apply w-auto text-left;
 }
 .gfield {
-  @apply mb-4;
+  @apply flex items-center;
 }
 .gfield_label {
   @apply tracking-wide;
 }
 .ginput_container input[type=text], .ginput_container input[type=email], textarea, select {
-  @apply w-full py-3 px-3 text-base;
+  @apply w-full py-3 px-3 text-base mt-0;
   &::placeholder {
     @apply opacity-75 tracking-wide text-base;
   }
@@ -117,162 +117,80 @@
   @apply hidden;
 }
 
+#gform_wrapper_1 {
+  @apply my-0;
+}
+
 #gform_1 {
-  @apply text-gray-700;
-  .ginput_container input[type=text], .ginput_container input[type=email], textarea, select {
-    @apply border border-gray-400 rounded-sm;
+  @apply text-gray-700 flex;
+  .gform_body {
+    @apply w-auto flex-grow;
+  }
+  .ginput_container_email {
+    @apply mt-0 w-full;
+    input {
+      @apply w-full py-1 px-3;
+    }
+  }
+  .gfield {
+    @apply pr-0 mt-0;
+    label {
+      @apply text-white w-20;
+    }
   }
   .gform_fields {
     @apply mb-8;
   }
   .gform_button {
-    @apply text-white bg-c-blue-200 rounded-sm border-2 border-transparent transition duration-300 box-content;
+    @apply text-white bg-c-blue-100 p-0 leading-none transition duration-300 box-content h-full;
     &:hover {
-      @apply bg-white border-2 border-c-blue-200 text-c-blue-200;
+      @apply bg-c-blue-300;
     }
+  }
+  .gform_footer {
+    @apply m-0 p-0 w-auto;
   }
 }
 
 @screen md {
   #gform_1 {
-    @apply flex items-end flex-wrap;
-    .gform_body {
-      @apply w-4/5;
+    .ginput_container_email {
+      input {
+        @apply w-full py-2 px-3;
+      }
     }
-    .gform_fields {
-      @apply flex items-end mb-0;
-    }
-    .gfield {
-      @apply mb-0 mr-8 w-1/2;
-    }
-    .gform_footer {
-      @apply w-1/5;
-    }
-    .gfield_label {
-      @apply mb-1 block;
-    }
-  }
-}
-
-@screen lg {
-  #gform_1 {
-    @apply max-w-3xl mx-auto;
   }
 }
 
 @screen xl {
   #gform_1 {
-    @apply max-w-4xl;
-  }
-}
-
-#gform_2 {
-  @apply text-white;
-  .ginput_container input[type=text], .ginput_container input[type=email], textarea, select {
-    @apply rounded-sm text-black;
-  }
-  .ginput_container_consent {
-    input {
-      @apply mr-2;
-    }
-  }
-  .gform_button {
-    @apply text-white bg-c-blue-200 border-2 border-transparent rounded-sm transition duration-300;
-    &:hover {
-      @apply bg-white border-2 border-transparent text-c-blue-200;
-    }
-  }
-  .gform_body {
-    @apply mb-8;
-  }
-}
-
-@screen md {
-  #gform_2 {
-    .gform_fields {
-      @apply grid grid-cols-3 grid-rows-3 gap-0;
-    }
-    .gfield {
-      @apply mb-4;
-    }
-    .gfield_label {
-      @apply mb-1 block;
-    }
-    .hidden_label {
-      .gfield_label {
-        @apply hidden;
-      }
-    }
     .gform_body {
-      @apply mb-0;
-    }
-    .gform_footer {
-      @apply col-start-3 mt-2;
-    }
-    #field_2_3 {
-      @apply row-span-2 col-span-2 ml-8;
-      textarea {
-        @apply h-36;
-      }
-    }
-    #field_2_2 {
-      @apply row-start-2;
-    }
-    #field_2_4 {
-      @apply row-start-3 mt-4
-      ;
-    }
-  }
-}
-
-@screen lg {
-  #gform_2 {
-    @apply max-w-3xl mx-auto;
-  }
-}
-
-@screen xl {
-  #gform_2 {
-    @apply max-w-4xl;
-  }
-}
-
-#gform_3 {
-  .gform_button {
-    @apply text-white bg-c-blue-100 rounded-sm border-2 border-transparent transition duration-300;
-    &:hover {
-      @apply bg-white border-2 border-c-blue-100 text-c-blue-100;
-    }
-  }
-}
-
-@screen md {
-  #gform_3 {
-    .gform_fields {
-      @apply grid grid-cols-2 gap-6;
+      @apply w-full;
     }
     .gfield {
-      @apply mb-0;
+      @apply flex;
     }
-    #field_3_5 {
-      @apply col-span-2;
+    .ginput_container {
+      @apply flex-grow;
     }
-    .ginput_container_consent {
-      @apply mt-2;
+    .gfield_label {
+      @apply pr-8;
     }
   }
 }
 
-@screen lg {
-  #gform_3 {
+.post_form {
+  #gform_1 {
     .gfield_label {
-      @apply mb-1 block;
+      @apply hidden;
     }
-    .hidden_label {
-      .gfield_label {
-        @apply hidden;
+    .gform_button {
+      @apply bg-c-red-100;
+      &:hover {
+        @apply bg-c-red-200;
       }
     }
   }
 }
+
 /* purgecss end ignore */

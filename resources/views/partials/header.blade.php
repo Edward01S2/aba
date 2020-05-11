@@ -1,16 +1,16 @@
 <header>
-  <nav x-data="{ open: false }" class="bg-transparent absolute top-0 right-0 left-0 z-40">
-    <div class="container relative z-40 mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+  <nav x-data="{ open: false }" class="bg-white">
+    <div class="container relative z-40 mx-auto px-6 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between">
         <div class="flex items-center">
           <div class="flex-shrink-0">
             {{-- @dump($logo) --}}
-            <a href="{{ home_url('/') }}">
-              <img class="block h-20 w-auto mt-8 transform transition duration-300 hover:scale-105" src="{!! $logo['url'] !!}" alt="{{ $siteName }}" />
+            <a class="py-4 block lg:py-6" href="{{ home_url('/') }}">
+              <img class="block h-12 w-auto transform transition duration-300 hover:scale-105" src="{!! $logo['url'] !!}" alt="{{ $siteName }}" />
             </a>
           </div>
         </div>
-        <div class="hidden sm:ml-6 sm:block md:mt-8">
+        <div class="hidden md:block lg:m-0">
           <div class="flex items-center">
             <div class="hidden sm:block sm:ml-6">
               <div class="flex">
@@ -30,21 +30,24 @@
                         <div class="py-1 rounded-md rounded-tl-none bg-white">
                           @foreach($children as $item)
                           @php $classes = $item['classes'] ? $item['classes'] . ' ' : ''; @endphp
-                            <a href="{!! $item['url'] !!}" class="{!! $classes !!}block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none transition duration-300 ease-in-out">{!! $item['title'] !!}</a>
+                            <a href="{!! $item['url'] !!}" class="{!! $classes !!}block px-4 py-2 text-sm font-medium leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none transition duration-300 ease-in-out lg:text-base">{!! $item['title'] !!}</a>
                           @endforeach
                         </div>
                       </div>
                     </div>
                   @else
-                    <a href="{!! $item['url'] !!}" class="{!! $classes !!}mx-3 ml-8 pt-2 pb-1 font-medium text-sm leading-5 tracking-wider border-b-2 border-transparent text-white hover:opacity-75 hover:border-b-2 hover:border-white focus:outline-none transition duration-300 ease-in-out md:text-base">{!! $item['title'] !!}</a>
+                  <div class="text-left pl-12 group lg:pl-20">
+                    <div class="text-c-gray-100 group-hover:text-c-blue-100 transition duration-300 ease-in-out">{!! '0' . strval($loop->index + 1) . '.' !!}</div>
+                    <a href="{!! $item['url'] !!}" class="{!! $classes !!}pt-2 pb-1 font-bold text-c-blue-400 text-sm leading-5 tracking-wider border-b-2 border-transparent group-hover:text-c-blue-100 hover:border-b-2 hover:border-white focus:outline-none transition duration-300 ease-in-out md:text-base xl:text-lg">{!! $item['title'] !!}</a>
+                  </div>
                   @endif
                 @endforeach
               </div>
             </div>
           </div>
         </div>
-        <div class="-mr-2 flex sm:hidden">
-          <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-white bg-c-blue-200 hover:text-white hover:bg-c-blue-200 hover:scale-125 focus:outline-none focus:text-white transition transform duration-150 ease-in-out">
+        <div class="flex md:hidden">
+          <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-white bg-c-blue-100 hover:text-white hover:scale-105 hover:bg-c-blue-200 focus:outline-none focus:text-white transition transform duration-150 ease-in-out">
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
               <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -53,9 +56,9 @@
         </div>
       </div>
     </div>
-    <div :class="{'block': open, 'hidden': !open}" class="mobile-nav hidden absolute z-40 top-0 right-0 sm:hidden" x-transition:enter="transition ease-out duration-1000" x-transition:enter-start="transform opacity-0 translate-x-40" x-transition:enter-end="transform opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
-      <div @click.away="open = false" class="pt-8 pb-8 pl-8 w-64 bg-c-blue-200 rounded-l-md rounded-b-md shadow-md relative flex flex-col items-start">
-        <button @click="open = !open" class="absolute top-0 right-0 mt-6 mr-2 flex items-center justify-center p-2 rounded-md text-white bg-c-blue-200 hover:text-white hover:bg-c-blue-200 hover:scale-125 focus:outline-none focus:text-white transition transform duration-150 ease-in-out">
+    <div x-show="open" class="mobile-nav md:hidden absolute z-40 top-0 right-0" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="transform opacity-0 translate-x-full" x-transition:enter-end="transform opacity-100 translate-x-0" x-transition:leave="transition ease-in duration-500" x-transition:leave-start="transform opacity-100 translate-x-0" x-transition:leave-end="transform opacity-0 translate-x-full">
+      <div @click.away="open = false" class="pt-8 pb-8 pl-8 w-64 bg-c-blue-100 rounded-l-md rounded-b-md rounded-tl-none shadow-md relative flex flex-col items-start">
+        <button @click="open = !open" class="absolute top-0 right-0 mt-5 mr-6 flex items-center justify-center p-2 rounded-md text-white bg-c-blue-200 md:mr-6 hover:text-white hover:bg-c-blue-200 hover:scale-105 focus:outline-none focus:text-white transition transform duration-150 ease-in-out">
           <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
             <path :class="{'hidden': open, 'inline-flex': !open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             <path :class="{'hidden': !open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -83,7 +86,10 @@
               </div>
             </div> --}}
           @else
-            <a href="{!! $item['url'] !!}" class="{!! $classes !!}py-1 mb-4 text-lg font-semibold text-gray-300 tracking-wider focus:outline-none focus:text-white transition duration-150 ease-in-out">{!! $item['title'] !!}</a>
+          <div class="text-left mb-4">
+            <div class="text-gray-500">{!! '0' . strval($loop->index + 1) . '.' !!}</div>
+            <a href="{!! $item['url'] !!}" class="{!! $classes !!}py-1 mb-4 text-lg bold text-gray-300 tracking-wider focus:outline-none focus:text-white transition duration-150 ease-in-out">{!! $item['title'] !!}</a>
+          </div>
           @endif
         @endforeach
       </div>

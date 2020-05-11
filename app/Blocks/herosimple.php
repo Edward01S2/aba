@@ -46,13 +46,9 @@ class herosimple extends Block
     public function with()
     {
         return [
-            'title' => get_field('title'),
-            'super' => get_field('supertitle'),
             'content' => get_field('content'),
             'link' => get_field('link'),
             'image' => get_field('bg image'),
-            'side' => $this->position(),
-            'color' => get_field('bg color'), 
         ];
     }
 
@@ -66,13 +62,9 @@ class herosimple extends Block
         $herosimple = new FieldsBuilder('herosimple');
 
         $herosimple
-            ->addText('title')
-            ->addText('supertitle')
             ->addTextarea('content')
             ->addLink('link')
-            ->addTextarea('bg color')
-            ->addImage('bg image')
-            ->addTrueFalse('image left');
+            ->addImage('bg image');
 
         return $herosimple->build();
     }
@@ -82,9 +74,4 @@ class herosimple extends Block
      *
      * @return array
      */
-    public function position()
-    {
-        $side = (get_field('image left')) ? 'true' : 'false';
-        return $side;
-    }
 }

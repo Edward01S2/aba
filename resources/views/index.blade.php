@@ -3,7 +3,7 @@
 @section('content')
 {{-- @dump($posts) --}}
 <div class="relative overflow-hidden bg-c-gray-300">
-  <div class="relative container mx-auto px-4 z-30 flex flex-col sm:px-6 lg:px-8">
+  <div class="relative container mx-auto px-6 z-30 flex flex-col sm:px-6 lg:px-8">
       <div class="absolute top-0 w-3/4 right-0 h-full bg-top bg-cover bg-no-repeat" style="background-image:url('{!! $blog_bg !!}')">
         {{-- <img :class="{'ml-auto' : left}" class="object-cover object-center" src="{!! $image['url'] !!}" alt=""> --}}
       </div>
@@ -16,7 +16,7 @@
 </div>
   {{-- @include('partials.page-header') --}}
   <div class="bg-white">
-    <div class="container mx-auto px-4 pt-4 sm:px-6 lg:px-8 lg:pt-8">
+    <div class="container mx-auto px-6 pt-4 sm:px-6 lg:px-8 lg:pt-8">
       @if (! have_posts())
         <x-alert type="warning">
           {!! __('Sorry, no results were found.', 'sage') !!}
