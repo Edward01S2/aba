@@ -42,3 +42,7 @@ function input_to_button( $button, $form ) {
  
     return $dom->saveHtml( $new_button );
 }
+
+add_filter('admin_footer_text', function() {
+    echo '<span>Custom theme development by <a href="https://rndr.tech" target="_blank">rndr.tech</a></span>';
+});

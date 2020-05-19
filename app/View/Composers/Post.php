@@ -44,6 +44,7 @@ class Post extends Composer
             'post_status' => 'publish',
             'posts_per_page' => get_field('Post Count'),
             'post__not_in' => [get_the_ID()],
+            'orderby' => 'rand'
             // 'category_name' => $cat,
             //Here we can get more than one post type. Useful to a home page.
         );

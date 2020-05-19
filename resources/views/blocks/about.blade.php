@@ -1,7 +1,7 @@
 @if($show)
   <section id="{!! $title_link !!}">
     <div class="container mx-auto px-6 pt-4 pb-8 sm:px-6 lg:px-8 lg:pt-4 lg:pb-12">
-      <div class="flex items-center justify-center py-8">
+      <div class="flex items-center justify-center pb-8">
         <h2 class="text-3xl font-bold text-c-blue-100 md:text-3xl xl:text-4xl">{!! $title !!}</h2>
       </div>
       <div data-aos="fade-up" class="pb-8 lg:pb-12">

@@ -1,4 +1,4 @@
-<section id="{!! strtolower($title) !!}">
+<section id="{!! strtolower($title) !!}" class="mb-4 md:mb-8 lg:mb-12">
   <div class="bg-c-blue-100 text-white lg:flex">
     <div class="lg:w-1/2 lg:order-1">
       <img class="w-full h-full object-cover object-center" src="{!! $image['url'] !!}" alt="">

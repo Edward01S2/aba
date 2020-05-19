@@ -1,3 +1,4 @@
+@if($show)
 <section id="{!! strtolower($title) !!}">
   <div class="container mx-auto px-6 pb-8 sm:px-6 lg:px-8 lg:pb-10">
     <div class="border-b border-gray-200">
@@ -18,3 +19,4 @@
     </div>
   </div>
 </section>
+@endif

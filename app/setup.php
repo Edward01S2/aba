@@ -141,34 +141,3 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer'
     ] + $config);
 });
-
-//Add custom post types
-add_action( 'init', function() {
-
-	register_extended_post_type( 'function', [
-        'admin_cols' => array(
-            // The default Title column:
-            'title',
-            // A taxonomy terms column:
-            // 'genre' => array(
-            //     'taxonomy' => 'category'
-            // ),
-            // A meta field column:
-            'date' => array(
-                'title'       => 'Date',
-                'meta_key'    => 'date',
-                'date_format' => 'd/m/Y'
-            ),
-        ),
-        'menu_icon' => 'dashicons-feedback',
-        'show_in_rest' => true,
-        'supports' => ['excerpt', 'editor', 'thumbnail', 'title'],
-        'template' => $template,
-    ],
-    [
-        'singular' => 'Function',
-        'plural'   => 'Functions',
-        'slug'     => 'function',   
-    ]
-    );
-} );
